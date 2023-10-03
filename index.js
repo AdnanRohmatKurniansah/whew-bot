@@ -3,6 +3,7 @@ const { convertToSticker } = require('./services/sticker')
 const { searchYgoCard } = require('./services/ygo')
 const { searchComic } = require('./services/comic')
 const client = require('./libs/client')
+const { checkWeather } = require('./services/weather')
 
 const menu = `
 📜 Menu:
@@ -10,6 +11,7 @@ const menu = `
 - Type "/sticker" to convert image -> sticker.
 - Type "/ygo *query*" to search yugioh's card.
 - Type "/comic *query*" to search comic.
+- Type "/weather *place*" to check weather.
 `
 
 client.initialize()
@@ -37,6 +39,8 @@ client.on('message', async msg => {
         searchYgoCard(msg)
     } else if (msg.body.startsWith('/comic ')) {
         searchComic(msg)
+    } else if (msg.body.startsWith('/weather ')) {
+        checkWeather(msg)
     }
 })
 

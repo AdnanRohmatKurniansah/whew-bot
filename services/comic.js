@@ -12,14 +12,14 @@ exports.searchComic = async (msg) => {
         const comics = response.data.data
 
         if (comics.length === 0) {
-            msg.reply('No comic matching your query was found in the database 😥');
+            msg.reply('No comic matching your query was found in the database 😥')
         } else {
             for (const comic of comics) {
-                const media = await MessageMedia.fromUrl(comic.image);
-                const caption = `Title: ${comic.title}\nType: ${comic.type}\nDesc: ${comic.desc}`;
+                const media = await MessageMedia.fromUrl(comic.image)
+                const caption = `Title: ${comic.title}\nType: ${comic.type}\nDesc: ${comic.desc}`
                 client.sendMessage(msg.from, media, { 
                     caption 
-                });
+                })
             }
         }
     } catch (error) {
